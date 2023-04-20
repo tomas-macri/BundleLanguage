@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
                 // TODO: This should be setLocales and a LocaleList, with the first locale being the one you want to display
                 config.setLocale(locale)
                 // TODO: This is deprecated, but I don't know what to use instead
-                resources.updateConfiguration(config, resources.displayMetrics)
+                resources.configuration.setTo(config)
+                resources.displayMetrics.setTo(resources.displayMetrics)
                 recreate()
             }
 
