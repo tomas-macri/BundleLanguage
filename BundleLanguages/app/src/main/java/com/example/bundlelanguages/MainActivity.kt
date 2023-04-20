@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.example.bundlelanguages.databinding.ActivityMainBinding
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
+import com.google.android.play.core.splitinstall.SplitInstallRequest
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
                 //Move the selected locale to the first position
                 val locale = installedLocales[position]
+//                downloadLocale(locale)
                 installedLocales.remove(locale)
                 installedLocales.add(0, locale)
 
@@ -71,6 +74,23 @@ class MainActivity : AppCompatActivity() {
                 //Do nothing
             }
         }
+
+    }
+
+    private fun downloadLocale(locale: Locale) {
+        // Creates a request to download and install additional language resources.
+        // Creates a request to download and install additional language resources.
+        val request =
+            SplitInstallRequest.newBuilder() // Uses the addLanguage() method to include French language resources in the request.
+                // Note that country codes are ignored. That is, if your app
+                // includes resources for “fr-FR” and “fr-CA”, resources for both
+                // country codes are downloaded when requesting resources for "fr".
+                .addLanguage(Locale.forLanguageTag(locale.toLanguageTag()))
+                .build()
+        // Submits the request to install the additional language resources.
+    // Submits the request to install the additional language resources.
+        val splitInstall = SplitInstallManagerFactory.create(this)
+        splitInstall.startInstall(request)
 
     }
 }
