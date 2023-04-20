@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         //Get installed locales into a list
         val installedLocales: MutableList<Locale> = mutableListOf()
         for (i in 0 until resources.configuration.locales.size()) {
-            installedLocales.add(resources.configuration.locales.get(i))
+            if (resources.configuration.locales.get(i).toString() in appLanguages) {
+                //We filter here to avoid a bug when updating the list order in OnItemSelected
+                installedLocales.add(resources.configuration.locales.get(i))
+            }
         }
 
         // Display the list of installed locales in the spinner
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.spinnerLanguages.adapter = ArrayAdapter(
             this,
             com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
-            installedLocales.filter { it.toString() in appLanguages }.map { it.displayName }
+            installedLocales.map { it.displayName }
         )
 
 
