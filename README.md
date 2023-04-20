@@ -1,5 +1,14 @@
 # Gestión de idiomas en Android App Bundles
 
+## ¿Qué es Android App Bundle (AAB)?
+
+Android App Bundle (AAB) se lanzó en 2018 y es un formato de publicación para Android compatible con Google Play y otras tiendas de aplicaciones, además de herramientas de compilación como Android Studio.
+
+## ¿Qué diferencia hay entre AAB y APK?
+
+Los paquetes de aplicaciones solo se pueden publicar y no se pueden instalar en dispositivos Android. El paquete de Android (APK) es el formato instalable y ejecutable de Android para apps. Un distribuidor debe procesar los paquetes de aplicaciones y convertirlos en APK para que se puedan instalar en los dispositivos.
+
+
 ## AAB Deploy en Android emulator
 
 ### 1. Seleccionar la build variant a release
